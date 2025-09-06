@@ -1,0 +1,34 @@
+name: app_mobile_flutter
+description: "A new Flutter project."
+publish_to: 'none' # Remove esta linha se quiser publicar no pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Ícones padrão iOS
+  cupertino_icons: ^1.0.8
+
+  # Carrossel de imagens
+  carousel_slider: ^5.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/banner.jpg
+    - assets/images/sobre.jpg
+    - assets/images/export.jpg
+    - assets/images/opcoes_biblioteca.jpg
+    - assets/images/opcoes_perfil.jpg

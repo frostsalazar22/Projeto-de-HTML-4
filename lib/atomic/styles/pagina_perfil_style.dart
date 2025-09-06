@@ -69,25 +69,25 @@ class PerfilStyles {
 
   // ====== Botão padrão (button / :hover) ======
   static ButtonStyle get botaoAmarelo => ButtonStyle(
-        backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
-          if (states.contains(MaterialState.hovered) ||
-              states.contains(MaterialState.pressed)) {
+        backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
+          if (states.contains(WidgetState.hovered) ||
+              states.contains(WidgetState.pressed)) {
             return destaqueHover; // hover
           }
           return destaque;
         }),
         foregroundColor:
-            MaterialStateProperty.all<Color>(textoBotao), // color: #1a242f
-        padding: MaterialStateProperty.all<EdgeInsets>(
+            WidgetStateProperty.all<Color>(textoBotao), // color: #1a242f
+        padding: WidgetStateProperty.all<EdgeInsets>(
           const EdgeInsets.symmetric(vertical: 12),
         ),
-        shape: MaterialStateProperty.all(
+        shape: WidgetStateProperty.all(
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
-        textStyle: MaterialStateProperty.all<TextStyle>(
+        textStyle: WidgetStateProperty.all<TextStyle>(
           const TextStyle(fontWeight: FontWeight.bold, fontSize: 16), // 1rem
         ),
-        elevation: MaterialStateProperty.all<double>(0),
+        elevation: WidgetStateProperty.all<double>(0),
       );
 
   // ====== “Visitante” (link) ======
@@ -95,9 +95,9 @@ class PerfilStyles {
       TextStyle(color: visitor, fontSize: 14.4); // 0.9rem
 
   // Use em TextButton.styleFrom(foregroundColor: …)
-  static MaterialStateProperty<Color?> get visitorLinkColor =>
-      MaterialStateProperty.resolveWith<Color?>((states) {
-        if (states.contains(MaterialState.hovered)) return destaque;
+  static WidgetStateProperty<Color?> get visitorLinkColor =>
+      WidgetStateProperty.resolveWith<Color?>((states) {
+        if (states.contains(WidgetState.hovered)) return destaque;
         return visitor;
       });
 }

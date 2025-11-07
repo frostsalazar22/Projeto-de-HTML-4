@@ -1,6 +1,7 @@
-name: app_mobile_flutter
+name: circuito_rpg
 description: "A new Flutter project."
-publish_to: 'none' # Remove esta linha se quiser publicar no pub.dev
+
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -11,10 +12,12 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # Ícones padrão iOS
   cupertino_icons: ^1.0.8
-
-  # Carrossel de imagens
+  # Project dependencies
+  get_it: ^7.2.0
+  provider: ^6.0.5
+  http: ^0.13.6
+  dartz: ^0.10.1
   carousel_slider: ^5.1.1
 
 dev_dependencies:
@@ -23,9 +26,12 @@ dev_dependencies:
 
   flutter_lints: ^5.0.0
 
+
 flutter:
+
   uses-material-design: true
 
+  # Assets
   assets:
     - assets/images/banner.jpg
     - assets/images/sobre.jpg

@@ -139,5 +139,3 @@ flutter test
 
 > Projeto acadêmico — Disciplina: **Desenvolvimento Mobile com Dart e Flutter**
 > Entrega Parcial 1 (Arquitetura, Estado e Testes) — **07/11**
-
-```

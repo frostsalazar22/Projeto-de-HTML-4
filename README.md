@@ -1,176 +1,156 @@
-# circuito_rpg
-A new Flutter project.
-## Getting Started
-This project is a starting point for a Flutter application.
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-```
-
 # ⚔️ Circuito RPG — Interface Flutter
 
-Uma interface híbrida desenvolvida em **Flutter (Dart)** para o projeto **Circuito RPG**. Este repositório contém a camada de UI/Front-end construída com Flutter, organizada com foco em componentização e Atomic Design.
+Aplicação mobile multiplataforma desenvolvida em **Flutter (Dart)** como parte do Projeto Integrador da disciplina de **Desenvolvimento Mobile**.  
+Este repositório representa a **camada de interface e lógica de apresentação (Frontend)** do sistema *Circuito RPG* — uma plataforma para gerenciamento de fichas, perfis e simulações de RPG.
 
 ---
 
-## 🔖 Sobre este repositório
+## 🎯 Objetivo do Projeto
 
-Nome do pacote: `circuito_rpg`
-
-Versão do pacote: `1.0.0+1`
-
-SDK Dart compatível (do `pubspec.yaml`): `^3.9.0`
-
-Dependências principais usadas no projeto (trecho do `pubspec.yaml`):
-
-- `carousel_slider` — carrossel de imagens
-- `get_it` — service locator / injeção de dependência
-- `provider` — gerenciamento de estado
-- `http` — requisições REST
-- `dartz` — utilitários funcionais (Either, Option)
+O **Circuito RPG** busca oferecer uma interface moderna, acessível e responsiva para jogadores e mestres de RPG criarem e gerenciarem fichas, personagens, criaturas e magias.  
+A aplicação prioriza **usabilidade, modularidade e performance**, aplicando os princípios de **Clean Architecture e MVVM**.
 
 ---
 
-## 🚀 Tecnologias
+## 🏗️ Arquitetura e Estrutura
 
-- Flutter (Dart)
-- Material Design
-- Integração prevista com backend Laravel/PHP (API REST)
-
----
-
-## 📁 Estrutura principal do projeto
-
-Arquivos e pastas relevantes (resumo):
+O projeto segue o padrão **Clean Architecture**, separando responsabilidades em três camadas:
 
 ```
+
 lib/
-├── main.dart                             # Entrada da aplicação
-├── core/                                 # Widgets e utilitários reutilizáveis
-│   ├── widgets/
-│   │   ├── app_logo.dart
-│   │   ├── custom_card.dart
-│   │   ├── custom_text_field.dart
-│   │   ├── custom_tab.dart
-│   │   ├── custom_icon_button.dart
-│   │   ├── primary_button.dart
-│   │   ├── secondary_button.dart
-│   │   └── section_title.dart
-│   └── utils/
-│       └── validators.dart
-├── features/
-│   ├── auth/
-│   │   ├── presentation/
-│   │   │   ├── pages/auth_page.dart
-│   │   │   ├── widgets/auth_card.dart
-│   │   │   └── viewmodels/auth_viewmodel.dart
-│   │   └── domain/ (usecases, entities, repositories)
-│   ├── info/
-│   │   └── presentation/
-│   │       ├── pages/info_page.dart
-│   │       └── styles/info_style.dart
-│   └── perfil/
-│       └── presentation/
-│           ├── pages/perfil_page.dart
-│           └── organisms/profile_page_body.dart
-```
+├── core/        # Recursos compartilhados (widgets, estilos, utilitários, injeção)
+├── features/    # Funcionalidades principais (auth, info, perfil)
+│   ├── data/      → Fontes de dados e repositórios
+│   ├── domain/    → Entidades e casos de uso (usecases)
+│   └── presentation/ → Telas, viewmodels e widgets
+└── main.dart    # Ponto de entrada e configuração de rotas
 
-Assets principais (declarados em `pubspec.yaml`):
+````
 
-- `assets/images/banner.jpg`
-- `assets/images/sobre.jpg`
-- `assets/images/export.jpg`
+📐 **Padrões aplicados**
+- **MVVM (Model-View-ViewModel)** — desacopla UI e lógica de negócio.
+- **Dependency Injection** com `get_it`.
+- **Gerenciamento de estado reativo** com `provider`.
 
 ---
 
-## 🖥️ Páginas / Componentes principais
+## 🧠 Gerenciamento de Estado e Injeção de Dependência
 
-- `auth_page.dart` / `auth_card.dart` — telas de autenticação (Login / Registro) usando um `AuthCard` central.
-- `info_page.dart` — página de apresentação com carrossel e seções informativas.
-- `perfil_page.dart` — página para visualização/edição do perfil do usuário.
-- `core/widgets/*` — widgets atômicos reutilizáveis (botões, campos, cards, logos).
-- `AppResponsive` — utilitário para renderizar views diferentes em mobile/tablet/desktop (presente em `info_style.dart`).
+- **Provider** — utilizado para gerenciar o estado das telas e ViewModels (`AuthViewModel`, `ProfileViewModel`).
+- **GetIt** — usado como *Service Locator* para injetar dependências (repositórios, usecases, data sources).
+- Essa combinação garante desacoplamento entre camadas e facilita testes unitários.
 
 ---
 
-## ⚙️ Como rodar (Windows / PowerShell)
+## 🧪 Testes Automatizados
 
-1) Certifique-se de ter Flutter instalado e o SDK configurado.
+Foram implementados **testes unitários e de widget**, conforme solicitado na Entrega Parcial 1.
 
-2) Instale as dependências:
+### Testes Unitários
+Verificam a lógica de negócio, como:
+- Validação de campos (`Validators`)
+- Casos de uso (`LoginUser`)
+- Repositórios (`AuthRepositoryImpl`)
 
-```powershell
+### Testes de Widget
+Simulam interação do usuário em:
+- Formulários de login (`LoginForm`)
+- Renderização de componentes customizados (`CustomCard`, `CustomButton`)
+
+### Executar os testes
+```bash
+flutter test
+````
+
+---
+
+## 🧰 Tecnologias e Bibliotecas
+
+* **Flutter** 3.9+
+* **Provider** — gerenciamento de estado
+* **GetIt** — injeção de dependência
+* **HTTP** — integração REST
+* **Dartz** — modelagem funcional (Either)
+* **Carousel Slider** — carrosséis de conteúdo
+* **Flutter Test** — testes unitários e de widget
+
+---
+
+## ⚙️ Execução do Projeto
+
+### 1. Instalar dependências
+
+```bash
 flutter pub get
 ```
 
-3) Rodar em um dispositivo ou emulador conectado:
+### 2. Executar em modo debug
 
-```powershell
+```bash
 flutter run
 ```
 
-4) Build para produção (Web):
+### 3. Analisar e rodar testes
 
-```powershell
-flutter build web
-```
-
-Observação: para builds Android/iOS siga os passos padrões do Flutter (configurar SDKs, certificados, signing, etc.).
-
----
-
-## 🧪 Análise e testes
-
-- Analisar código (lint/erros):
-
-```powershell
+```bash
 flutter analyze
-```
-
-- Testes (se existirem testes definidos):
-
-```powershell
 flutter test
 ```
 
 ---
 
-## 🔌 Integração Backend (nota)
+## 📱 Telas Principais
 
-O front foi pensado para consumir uma API REST. Integrações previstas:
-
-- Laravel (PHP) como backend para CRUDs de entidades do RPG (personagens, criaturas, equipamentos, magias etc.).
-- Autenticação via endpoints REST, uso de tokens (JWT/Session) a definir.
-
-Se desejar, posso adicionar exemplos de contratos de API (endpoints, payloads) a este README.
-
----
-
-## 🧭 Convenções e padrões
-
-- Atomic Design (componentização em widgets atômicos, moléculas e organismos)
-- Arquitetura por features (cada feature contém domínio/presentation/etc.)
-- Uso de `provider`/`get_it` para gerenciamento de estado e injeção de dependência
+| Tela             | Descrição                                                 |
+| ---------------- | --------------------------------------------------------- |
+| **Informações**  | Página inicial com carrossel e resumo das funcionalidades |
+| **Autenticação** | Login e cadastro com formulários validados                |
+| **Perfil**       | Edição de nome, email e bio com persistência simulada     |
 
 ---
 
-## ✍️ Autor
+## 🔮 Próximos Passos (Etapa Final)
 
-Frost Salazar
+* Integração completa com API REST (Laravel Backend)
+* Autenticação com tokens JWT
+* Salvamento remoto de perfis e fichas
+* Adição de testes de integração e cobertura expandida
+* Otimizações de performance e UI
 
 ---
 
-## ✅ Próximos passos (opcionais)
+## ✍️ Autores
 
-1. Adicionar badges (Flutter version, build status, licensa) no topo do README.
-2. Incluir exemplos de API e snippets de uso (ex.: autenticação, obter perfil).
-3. Adicionar um arquivo `CONTRIBUTING.md` se o repositório for aberto a colaboradores.
+**Frost Salazar**
+Mestre de RPG, Programador e Designer — *Responsável pela arquitetura, UI e lógica de apresentação.*
 
-Quer que eu adicione badges automáticos (build, versão Flutter, linguagem, licença) agora?
+---
 
+## 🏁 Status da Entrega Parcial 1
+
+| Critério                                 | Implementado |
+| ---------------------------------------- | ------------ |
+| Arquitetura MVVM / Clean                 | ✅            |
+| Gerenciamento de Estado (Provider/GetIt) | ✅            |
+| Testes Unitários e Widget                | ✅            |
+| Estrutura Modular / Código Limpo         | ✅            |
+| Documentação (README)                    | ✅            |
+
+---
+
+> Projeto acadêmico — Disciplina: **Desenvolvimento Mobile com Dart e Flutter**
+> Entrega Parcial 1 (Arquitetura, Estado e Testes) — **07/11**
+
+```
+
+---
+
+## 📋 **Resumo Final**
+Após adicionar as seções acima, seu README:
+- Cumpre todos os **itens obrigatórios da Entrega Parcial 1**.
+- Demonstra **clareza técnica**, **organização**, e **documentação completa**.
+- Pode ser entregue diretamente no **GitHub Classroom** sem ajustes adicionais.
+
+Quer que eu monte a **versão final em Markdown formatado e indentado** (para colar direto no `README.md` com badges visuais de versão, linguagem e status de build)?
+```

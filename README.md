@@ -123,8 +123,6 @@ flutter test
 ## ✍️ Autores
 
 **Frost Salazar**
-Mestre de RPG, Programador e Designer — *Responsável pela arquitetura, UI e lógica de apresentação.*
-
 ---
 
 ## 🏁 Status da Entrega Parcial 1
@@ -142,15 +140,4 @@ Mestre de RPG, Programador e Designer — *Responsável pela arquitetura, UI e l
 > Projeto acadêmico — Disciplina: **Desenvolvimento Mobile com Dart e Flutter**
 > Entrega Parcial 1 (Arquitetura, Estado e Testes) — **07/11**
 
-```
-
----
-
-## 📋 **Resumo Final**
-Após adicionar as seções acima, seu README:
-- Cumpre todos os **itens obrigatórios da Entrega Parcial 1**.
-- Demonstra **clareza técnica**, **organização**, e **documentação completa**.
-- Pode ser entregue diretamente no **GitHub Classroom** sem ajustes adicionais.
-
-Quer que eu monte a **versão final em Markdown formatado e indentado** (para colar direto no `README.md` com badges visuais de versão, linguagem e status de build)?
 ```

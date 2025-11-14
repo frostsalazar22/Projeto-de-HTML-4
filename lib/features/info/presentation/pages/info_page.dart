@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+
 import '../styles/info_style.dart';
+import '../../../../core/widgets/responsive_menu.dart';
 
 class InformacoesPage extends StatelessWidget {
   // Lista de funcionalidades
@@ -42,46 +44,36 @@ class InformacoesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
+
+      // ======== APPBAR + MENU RESPONSIVO ==========
       appBar: AppBar(
-        title: Text('Circuito RPG', style: AppText.h2),
         backgroundColor: AppColors.header,
+        title: Text('Circuito RPG', style: AppText.h2),
+        elevation: 0,
+        actions: AppResponsive.isMobile(context)
+            ? null
+            : [
+                ResponsiveMenu(
+                  onNavigate: (route) => Navigator.pushNamed(context, route),
+                ),
+              ],
       ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: AppColors.header),
-              child: Text("Menu", style: AppText.h2),
-            ),
-            ...[
-              "Início",
-              "Sobre",
-              "Serviços",
-              "Depoimentos",
-            ].map((e) => ListTile(title: Text(e, style: AppText.body))),
-            const Divider(),
-            ListTile(
-              title: Text("Login", style: AppText.body),
-              onTap: () => Navigator.pushNamed(context, '/auth'),
-            ),
-            ListTile(
-              title: Text("Cadastro", style: AppText.body),
-              onTap: () => Navigator.pushNamed(context, '/auth'),
-            ),
-            const Divider(),
-            ListTile(
-              title: Text("Perfil", style: AppText.body),
-              onTap: () => Navigator.pushNamed(context, '/profile'),
-            ),
-          ],
-        ),
-      ),
+
+      // Drawer só quando for mobile (para evitar o ícone no AppBar em desktop)
+      drawer: AppResponsive.isMobile(context)
+          ? ResponsiveMenu(
+              onNavigate: (route) => Navigator.pushNamed(context, route),
+            )
+          : null,
+
+      // ==========================================================
       body: SingleChildScrollView(
         child: Column(
           children: [
             _buildHero(),
             _buildSobreProjeto(),
             _buildFuncionalidades(),
+
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: AppResponsive.isMobile(context)
@@ -91,6 +83,7 @@ class InformacoesPage extends StatelessWidget {
                       children: _buildExportSection(),
                     ),
             ),
+
             _buildTecnologias(),
             _buildStatus(),
             _buildRodape(),
@@ -100,7 +93,8 @@ class InformacoesPage extends StatelessWidget {
     );
   }
 
-  /// 🔹 HERO
+  // ==========================================================
+  // HERO
   Widget _buildHero() {
     return Stack(
       children: [
@@ -141,7 +135,8 @@ class InformacoesPage extends StatelessWidget {
     );
   }
 
-  /// 🔹 SOBRE O PROJETO
+  // ==========================================================
+  // SOBRE O PROJETO
   Widget _buildSobreProjeto() {
     return Container(
       color: AppColors.darkSection,
@@ -184,7 +179,8 @@ class InformacoesPage extends StatelessWidget {
     );
   }
 
-  /// 🔹 FUNCIONALIDADES
+  // ==========================================================
+  // FUNCIONALIDADES
   Widget _buildFuncionalidades() {
     return Container(
       color: AppColors.header,
@@ -231,7 +227,8 @@ class InformacoesPage extends StatelessWidget {
     );
   }
 
-  /// 🔹 EXPORTAÇÃO
+  // ==========================================================
+  // EXPORTAÇÃO
   List<Widget> _buildExportSection() {
     return [
       Expanded(
@@ -282,7 +279,8 @@ class InformacoesPage extends StatelessWidget {
     ];
   }
 
-  /// 🔹 TECNOLOGIAS
+  // ==========================================================
+  // TECNOLOGIAS
   Widget _buildTecnologias() {
     return Container(
       color: AppColors.header,
@@ -313,7 +311,8 @@ class InformacoesPage extends StatelessWidget {
     );
   }
 
-  /// 🔹 STATUS
+  // ==========================================================
+  // STATUS
   Widget _buildStatus() {
     return Padding(
       padding: const EdgeInsets.all(20.0),
@@ -358,7 +357,8 @@ class InformacoesPage extends StatelessWidget {
     );
   }
 
-  /// 🔹 RODAPÉ
+  // ==========================================================
+  // RODAPÉ
   Widget _buildRodape() {
     return Container(
       color: AppColors.footer,
